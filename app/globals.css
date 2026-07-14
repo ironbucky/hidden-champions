@@ -1,0 +1,625 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Hidden Champions — Pakistani identity design system
+   Warm Lahore paper · Mughal green · indigo ajrak · terracotta
+   Spectral display + Geist body · hairline borders · no shadows
+   ============================================================ */
+
+:root {
+  --bg: oklch(96% 0.014 82);
+  --surface: oklch(99% 0.005 82);
+  --surface-2: oklch(94% 0.016 82);
+  --fg: oklch(20% 0.02 60);
+  --muted: oklch(48% 0.014 70);
+  --border: oklch(88% 0.012 75);
+  --accent: oklch(30% 0.09 165);
+  --accent-ink: oklch(24% 0.07 165);
+  --accent-soft: oklch(94% 0.04 165);
+  --indigo: oklch(38% 0.13 260);
+  --indigo-ink: oklch(28% 0.1 260);
+  --terracotta: oklch(64% 0.14 42);
+  --terra-ink: oklch(48% 0.14 38);
+  --gold: oklch(74% 0.12 85);
+  --amber-bg: oklch(95% 0.05 75);
+  --amber-fg: oklch(45% 0.1 55);
+  --amber-bd: oklch(82% 0.07 70);
+  --r-card: 14px;
+  --r-pill: 999px;
+  --r-input: 12px;
+  --font-display: var(--font-spectral), "Iowan Old Style", Georgia, serif;
+  --font-sans:
+    var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    system-ui, sans-serif;
+  --font-mono:
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-indigo: var(--indigo);
+  --color-indigo-ink: var(--indigo-ink);
+  --color-terracotta: var(--terracotta);
+  --color-terra-ink: var(--terra-ink);
+  --color-gold: var(--gold);
+  --color-amber-bg: var(--amber-bg);
+  --color-amber-fg: var(--amber-fg);
+  --color-amber-bd: var(--amber-bd);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+  --radius-card: var(--r-card);
+  --radius-pill: var(--r-pill);
+  --radius-input: var(--r-input);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+::selection {
+  background: oklch(42% 0.1 165 / 0.18);
+  color: var(--fg);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   Pakistani cultural motifs — ajrak + truck-art
+   ============================================================ */
+
+.ajrak-band {
+  height: 18px;
+  background-color: var(--indigo);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><g fill='none' stroke='%23f4ecd8' stroke-width='1'><rect x='14' y='14' width='20' height='20'/><rect x='14' y='14' width='20' height='20' transform='rotate(45 24 24)'/></g><circle cx='24' cy='24' r='2' fill='%23c96442'/></svg>");
+  background-size: 48px 48px;
+  background-repeat: repeat-x;
+  background-position: center;
+  flex: none;
+}
+
+.ajrak-thin {
+  height: 8px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><g fill='none' stroke='%23313b7a' stroke-width='0.7' opacity='0.5'><rect x='14' y='14' width='20' height='20' transform='rotate(45 24 24)'/></g></svg>");
+  background-size: 32px 32px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.truck-dots {
+  height: 8px;
+  background-image: radial-gradient(
+    circle,
+    var(--terracotta) 1.4px,
+    transparent 1.8px
+  );
+  background-size: 12px 8px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+/* ============================================================
+   Component helpers
+   ============================================================ */
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  border-radius: var(--r-pill);
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+  transition: background 0.15s;
+}
+.btn-primary:hover {
+  background: var(--accent-ink);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--fg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.btn-outline:hover {
+  border-color: var(--indigo);
+  background: var(--surface-2);
+}
+
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 13px;
+  background: oklch(94% 0.06 85);
+  border: 1px solid oklch(80% 0.1 85);
+  border-radius: var(--r-pill);
+  color: oklch(36% 0.09 78);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.upvote {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--terra-ink);
+  min-height: 40px;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+}
+.upvote.voted {
+  background: var(--terracotta);
+  color: #fff;
+  border-color: var(--terracotta);
+}
+
+.cat-pill {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg);
+  white-space: nowrap;
+  min-height: 38px;
+}
+.cat-pill.active {
+  background: var(--indigo);
+  color: #fff;
+  border-color: var(--indigo);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terra-ink);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   Reusable primitives — inputs, cards, badges, rails, placeholders
+   ============================================================ */
+
+.input {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+  background: var(--surface);
+  padding: 10px 14px;
+  color: var(--fg);
+  font: inherit;
+  font-size: 15px;
+  min-height: 44px;
+  transition: border-color 0.15s;
+}
+.input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+.input::placeholder {
+  color: var(--muted);
+}
+.input:disabled {
+  opacity: 0.5;
+}
+
+select.input {
+  appearance: none;
+  cursor: pointer;
+}
+textarea.input {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
+}
+.card-link {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.card-link:hover {
+  border-color: var(--indigo);
+  background: var(--surface-2);
+}
+
+/* Reusable two-action approve/reject pair (admin queues + confirm/reject) */
+.btn-reject {
+  border: 1px solid var(--terracotta);
+  border-radius: var(--r-input);
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 40px;
+  color: var(--terra-ink);
+  background: transparent;
+  transition: background 0.15s;
+}
+.btn-reject:hover {
+  background: var(--surface-2);
+}
+.btn-reject:disabled {
+  opacity: 0.5;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.badge-status.amber {
+  background: var(--amber-bg);
+  color: var(--amber-fg);
+  border-color: var(--amber-bd);
+}
+.badge-status.accent {
+  background: oklch(94% 0.05 165);
+  color: var(--accent-ink);
+  border-color: oklch(82% 0.07 165);
+}
+.badge-status.indigo {
+  background: oklch(94% 0.05 265);
+  color: var(--indigo-ink);
+  border-color: oklch(82% 0.06 265);
+}
+
+.rank-badge {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--muted);
+}
+.rank-badge.r1 {
+  background: var(--gold);
+  color: var(--fg);
+}
+.rank-badge.r2 {
+  background: var(--indigo);
+}
+.rank-badge.r3 {
+  background: var(--terracotta);
+}
+
+.filter-rail {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.filter-rail::-webkit-scrollbar {
+  display: none;
+}
+.filter-rail > * {
+  flex: none;
+}
+
+.photo-placeholder {
+  background-color: var(--surface-2);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><g fill='none' stroke='%23313b7a' stroke-width='0.8' opacity='0.18'><rect x='14' y='14' width='20' height='20'/><rect x='14' y='14' width='20' height='20' transform='rotate(45 24 24)'/></g></svg>");
+  background-size: 40px 40px;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+
+/* ============================================================
+   Mobile bottom tab bar
+   ============================================================ */
+
+.mobile-tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  z-index: 50;
+}
+
+.mobile-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 4px;
+  min-height: 56px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.12s;
+}
+
+.mobile-tab.active {
+  color: var(--accent);
+}
+
+.mobile-tab-icon {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  display: inline-flex;
+}
+.mobile-tab-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 639px) {
+  body {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (max-width: 639px) {
+  .btn-primary,
+  .btn-outline {
+    padding: 10px 16px;
+    font-size: 14px;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   Desktop extraordinary layer — 3D ajrak star + atmosphere + reveal
+   Desktop-only (≥1024px); mobile layout stays untouched
+   ============================================================ */
+
+.hero-atmos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><g fill='none' stroke='%23313b7a' stroke-width='0.6' opacity='0.5'><rect x='18' y='18' width='28' height='28'/><rect x='18' y='18' width='28' height='28' transform='rotate(45 32 32)'/></g></svg>");
+  background-size: 64px 64px;
+  opacity: 0.06;
+  animation: drift 80s linear infinite;
+}
+@keyframes drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 320px 320px;
+  }
+}
+
+.scene-3d {
+  perspective: 1400px;
+  perspective-origin: 50% 42%;
+  position: relative;
+}
+.star-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+.ajrak-sculpture {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  animation: star-spin 38s linear infinite;
+}
+@keyframes star-spin {
+  from {
+    transform: rotateY(0deg) rotateX(12deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(12deg);
+  }
+}
+.ajrak-layer {
+  position: absolute;
+  inset: 0;
+}
+.ajrak-layer svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 10px 24px rgba(38, 44, 98, 0.2));
+}
+
+.star-stat {
+  position: absolute;
+  padding: 11px 15px;
+  background: oklch(99% 0.005 82 / 0.94);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 10px 28px rgba(38, 44, 98, 0.14);
+  animation: float 6s ease-in-out infinite;
+}
+.star-stat .n {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--fg);
+}
+.star-stat .l {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
+}
+.star-stat.s1 {
+  top: 4%;
+  left: -4%;
+  animation-delay: 0s;
+}
+.star-stat.s2 {
+  top: 44%;
+  right: -6%;
+  animation-delay: -2s;
+}
+.star-stat.s3 {
+  bottom: 2%;
+  left: 8%;
+  animation-delay: -4s;
+}
+.star-stat.s3 .n {
+  color: var(--terra-ink);
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.card-3d {
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.25s,
+    border-color 0.25s;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.card-3d:hover {
+  box-shadow: 0 18px 42px rgba(38, 44, 98, 0.14);
+  border-color: var(--indigo);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1023px) {
+  .hero-atmos {
+    display: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ajrak-sculpture,
+  .star-stat,
+  .hero-atmos {
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

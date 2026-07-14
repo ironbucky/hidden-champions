@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#2f3b85"/>
+  <g fill="none" stroke="#f4ecd8" stroke-width="1.4" opacity="0.16">
+    <rect x="96" y="96" width="320" height="320"/>
+    <rect x="96" y="96" width="320" height="320" transform="rotate(45 256 256)"/>
+  </g>
+  <text x="256" y="286" font-family="Arial, Helvetica, sans-serif" font-size="196" font-weight="bold" fill="#f4ecd8" text-anchor="middle">HC</text>
+  <circle cx="256" cy="372" r="14" fill="#c96442"/>
+</svg>
