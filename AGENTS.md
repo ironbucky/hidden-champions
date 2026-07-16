@@ -44,3 +44,59 @@ Four-layer, feature-sliced structure:
 - Phone numbers live only in `supplier_contacts`, never in `suppliers`.
 - All config thresholds are typed in `/config` and runtime-tunable via the `config` table.
 - Run `npm run test:domain` and `npm run typecheck` before considering a slice complete.
+
+## Design layer (Open Design owns the visual layer)
+
+This project uses an external design tool (v0.dev / bolt.new) for all visual work. Open Design reads `DESIGN.md` in the project root for context.
+
+### What Open Design owns
+
+- All markup (JSX structure), Tailwind classes, `app/globals.css`
+- All responsive design decisions — mobile vs desktop, breakpoint choices
+- Colors, typography, spacing, shadows, border radii, animation
+- Component styling, hover/focus/active states, loading skeletons, empty states
+- SVG icons, decorative elements, imagery
+
+### What OpenCode owns (do not let design tools touch)
+
+- Import statements, `"use server"` / `"use client"` directives
+- React hooks: `useActionState`, `useTransition`, `useState`, `useEffect`, `usePathname`, `useSearchParams`
+- `form action={...}` / `formAction={...}` bindings
+- `redirect("/path")` calls — these gate auth and routing
+- ALL data fetching: `supabase.from(...)`, `createServiceRoleClient()`, `supabaseAuthAdapter.getSession()`
+- Component props interface signatures — adding/removing/changing TYPE of props
+- Server actions in `features/*/actions.ts`
+- Route creation/deletion (new `app/**/page.tsx` files)
+- Middleware (`proxy.ts`)
+- Domain layer (`domain/*`), infrastructure (`infrastructure/*`), config (`config/*`)
+
+### When creating new components or pages
+
+1. Build the scaffold with correct imports, hooks, data fetching, and props
+2. Add a prominent `{/* TODO: OPEN DESIGN — style this component */}` placeholder
+3. Tell the user: `>> SWITCH TO OPEN DESIGN — [file path] needs styling`
+4. Do NOT add Tailwind classes to new components — leave styling for Open Design
+
+### When Open Design needs backend changes
+
+If you receive a request like "Open Design needs [X] to implement this design", create the scaffold and hand back.
+
+### Handoff format
+
+```
+>> SWITCH TO OPEN DESIGN
+File: [path]
+Needs: [what styling is required]
+Current state: [what's already built]
+
+>> SWITCH TO OPENCODE
+Task: [backend change needed]
+File: [path]
+Reason: [why Open Design can't do it]
+```
+
+### Git safety
+
+- All design changes are tracked in git. `git diff` before committing to review.
+- If Open Design's output breaks functionality, revert with `git checkout -- <file>`.
+- If Open Design creates new files that conflict, `git status` will show them as untracked.
